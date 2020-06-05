@@ -1,0 +1,874 @@
+/**
+ * border radius
+ */
+
+/* FOR MY CARD*/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+/*
+body {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: azure;
+}*/
+
+/* NAVBAR*/
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+/*
+// :root {
+//   --background: #162447;
+// } */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: rgb(32, 32, 32);
+  color: white;
+  text-decoration: none;
+}
+input {
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+
+/* navigation styles start here */
+
+header {
+  background: var(--background);
+  text-align: center;
+  width: 100%;
+}
+
+.nav-img {
+  margin-top: 30px;
+  padding-top: 30px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  grid-column: 2 / 3;
+  padding: 0;
+  margin-top: 0px;
+}
+/* changed this from the tutorial video to
+   allow it to gain focus, making it tabbable */
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, 0.75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--background);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+  text-decoration: none;
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 2.5px;
+  font-size: 20px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #0381ca;
+  text-decoration: none;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+  a {
+    text-decoration: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr 2fr minmax(900px, 6fr) 1fr;
+    height: 75px;
+  }
+  .nav-img {
+    margin-top: 30px;
+    padding-top: 30px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .logo {
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    grid-column: 2 / 3;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  nav {
+    /** all: unset; /* this causes issues with Edge, since it's unsupported */
+
+    /* the following lines are not from my video, but add Edge support */
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1, 1);
+    background: none;
+    top: initial;
+    left: initial;
+    /* end Edge support stuff */
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+    font-size: 20px;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+    text-decoration: none;
+  }
+
+  nav a::before {
+    content: '';
+    color: #0381ca;
+    display: block;
+    height: 2px;
+    background: #c3edea;
+    position: absolute;
+    bottom: -0.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 290ms;
+    text-decoration: none;
+  }
+
+  nav a:hover::before {
+    color: #0381ca;
+    transform: scale(1, 1);
+    background: #c3edea;
+    text-decoration: none;
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+.date {
+  margin-top: 30px;
+}
+
+.card-image {
+  grid-area: image;
+}
+.card-text {
+  grid-area: text;
+}
+.card-stats {
+  grid-area: stats;
+}
+
+.card-image {
+  grid-area: image;
+  background-size: cover;
+}
+.image {
+  height: 400px;
+  width: 100%;
+}
+
+.card-text {
+  grid-area: text;
+  margin: 10px;
+  display: block;
+}
+.card-text .date {
+  color: rgb(255, 7, 110);
+  font-size: 11px;
+}
+.card-text p {
+  color: grey;
+  font-size: 13px;
+  font-weight: 300;
+  text-overflow: ellipsis ellipsis;
+  text-align: center;
+}
+.card-text h2 {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.card-stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  /* border-bottom-left-radius: 15px;
+   border-bottom-right-radius: 15px; */
+  background: rgb(255, 7, 110);
+  font-size: 14px;
+}
+
+.card-stats .stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  padding: 10px;
+  border: none;
+}
+.product-description {
+  text-overflow: ellipsis;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin: 25px;
+  height: 612px;
+}
+
+.cart {
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+}
+.card-button {
+  height: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-decoration: none;
+}
+.card-view-book-link {
+  text-decoration: none;
+}
+
+.card-view-book {
+  color: black;
+  align-items: center;
+  text-decoration: none;
+  font-size: 18px;
+}
+.card-view-book:hover {
+  color: rgb(255, 7, 110);
+  transition: ease-in-out 0.2s;
+}
+.card-buy {
+  color: black;
+  align-items: center;
+  font-size: 18px;
+}
+.card-buy:hover {
+  color: rgb(255, 7, 110);
+  transition: ease-in-out 0.2s;
+}
+
+.button {
+  display: flex;
+}
+
+.b1 {
+  flex: 1;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.b2 {
+  flex: 1;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #23a6d5;
+  margin-left: 20px;
+  padding: 5px;
+  background: white;
+  color: black;
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: 0.6s;
+  overflow: hidden;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background: rgb(255, 7, 110);
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+button:hover:before {
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 0.6;
+  transition: 0.7s;
+  text-decoration: none;
+}
+button:hover:after {
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 1;
+  transition: 0.7s;
+  text-decoration: none;
+}
+
+.btn,
+.jumbotron,
+.nav :hover {
+  border-radius: 0px;
+  text-decoration: none;
+}
+
+.titles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  font-size: 40px;
+  font-family: 'Nanum Gothic', sans-serif;
+  letter-spacing: 2px;
+}
+.products {
+  font-size: 40px;
+  font-family: 'Nanum Gothic', sans-serif;
+  letter-spacing: 2px;
+}
+
+/* cart badge */
+
+.cart-badge,
+.cart-badge:hover {
+  border-radius: 50%;
+  padding: 2px;
+  font-size: 12px;
+  font-style: italic;
+  background: #000;
+}
+/**
+ * single product page - product name
+ */
+
+.name {
+  background: indigo;
+  color: #fff;
+  font-weight: bold;
+}
+
+.shop-filter {
+  margin-left: 30px;
+  margin-bottom: 100px;
+}
+.shop-filter-header {
+  margin-bottom: 30px;
+  font-family: 'Dosis', serif;
+}
+
+.li-filter {
+  padding: 5px;
+}
+
+/* black shade form 10-1 */
+.search-result {
+  border: none;
+  box-sizing: border-box;
+  background-color: none;
+}
+/**
+ * product image on card
+ 
+
+.product-img {
+  min-height: 100px;
+}*/
+
+.jumbotron h2 {
+  margin-top: -20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .jumbotron h2 {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+  .logo {
+    height: 100px;
+  }
+  .nav-img {
+    height: 100px;
+  }
+}
+
+/**
+ * jumbotron animation
+ */
+
+.jumbotron {
+  height: 325px;
+  color: #fff;
+  background: linear-gradient(
+    -45deg,
+    #ee7752,
+    #e73c7e,
+    #23a6d5,
+    #23d5ab,
+    #fcff42
+  );
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 10s ease infinite;
+  -moz-animation: Gradient 10s ease infinite;
+  animation: Gradient 10s ease infinite;
+}
+
+.jumbotron-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 85px;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  margin-top: 10px;
+}
+
+.jumbotron-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  font-size: 25px;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  margin-top: 5px;
+  font-family: 'Dosis', sans-serif;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// CART PAGE //
+.cart-main {
+  display: flex;
+  margin-top: 50px;
+  padding-top: 100px;
+  justify-content: space-evenly;
+  height: 800px;
+  justify-content: space-around;
+}
+.cart-summary {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 800px;
+}
+
+//// CART BUTTON ////
+
+.cart-button {
+  transform: translate(-50%, -50%);
+  background: none;
+  color: #ccc;
+  width: 250px;
+  height: 80;
+  border: 1px solid #338033;
+  font-size: 18px;
+  border-radius: 4px;
+  transition: 0.6s;
+  overflow: hidden;
+}
+
+.cart-button:focus {
+  outline: none;
+}
+
+.cart-button:before {
+  content: '';
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  width: 60px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.5s;
+  filter: blur(30px);
+  transform: translateX(-130px) skewX(-15deg);
+}
+
+.cart-button:after {
+  content: '';
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 100%;
+  top: 0;
+  opacity: 0;
+  filter: blur(30px);
+  transform: translate(-100px) scaleX(-15deg);
+}
+
+.cart-button:hover {
+  background: #338033;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cart-button:hover:before {
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 0.6;
+  transition: 0.7s;
+  text-decoration: none;
+}
+.cart-button:hover:after {
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 1;
+  transition: 0.7s;
+  text-decoration: none;
+}
+
+.delivery-form {
+  height: 10px;
+  width: 500px;
+}
+.your-cart-has {
+  font-family: 'Dosis', serif;
+  font-size: 22px;
+  margin-left: 30px;
+}
+.cart-summary {
+  margin-left: 30px;
+}
+.cart-main {
+  display: flex;
+  justify-content: space-evenly;
+}
+/*
+.card {
+  width: 290px;
+  height: 690px;
+}*/
+.one {
+  width: 290px;
+  height: 690px;
+}
+a {
+  text-decoration: none;
+}
+
+// VIEW PRODUCT
+.view-product-main {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.row-sizing {
+  margin-top: 40px;
+  padding-bottom: 40px;
+  margin-left: 5px;
+}
+.card-sizing {
+  margin: 30px;
+  margin-top: 60px;
+}
+.admin-links {
+  color: black;
+  align-items: center;
+  padding: 10px;
+  padding-left: 50px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 25px;
+}
+.admin-list-item {
+  color: black;
+}
+.category-title {
+  margin: 50px;
+}
+.back-dashboard {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.create-cateory {
+  display: flexbox;
+}
+.create-category-main {
+  display: flex;
+  justify-content: space-evenly;
+}
+.back-to-dashboard {
+  font-size: 28px;
+}
+.continue-shopping {
+  font-size: 28px;
+  padding: 80px;
+}
+.cart-left {
+  margin-top: 50px;
+}
+.cart-right {
+  margin-top: 50px;
+}
+
+.pay-button {
+  margin-top: 0px;
+}
+.manage-product {
+  color: black;
+}
+.delete-product {
+  color: rgb(219, 57, 57);
+  font-size: 16px;
+}
+.manage-product-title {
+  margin-top: 70px;
+}
+.manage-products-main {
+  margin-top: 70px;
+}
+
+.manage-products-main-flex {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+.update-product-name {
+  width: 600px;
+  padding: 10px;
+  font-family: 'Nanum Gothic', sans-serif;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+.update-product {
+  height: 50px;
+  width: 30px;
+  text-align: center;
+}
+.shop-sizing {
+  margin-bottom: 100px;
+}
+.sign-in-to-checkout {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 100px;
+  margin-top: 50px;
+  font-size: 18px;
+  font-family: 'Quicksand', sans-serif;
+  height: 80px;
+  width: 150px;
+  border-radius: 7px;
+}
+.submit {
+  margin-top: 50px;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  height: 60px;
+  width: 150px;
+  border-radius: 7px;
+  letter-spacing: 1px;
+}
+.signup-error {
+  font-size: 14px;
+  font-family: 'Nanum Gothic', sans-serif;
+  letter-spacing: 0.5px;
+}
+.signup-success {
+  font-size: 14px;
+  font-family: 'Nanum Gothic', sans-serif;
+  letter-spacing: 1px;
+}
+.sign-in {
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 1px;
+}
+.upper-sign-in {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.upper-sign-up {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.user-not-found {
+  height: 50px;
+  width: 400px;
+  background-color: #ccc;
+  align-items: center;
+  text-align: center;
+  padding-top: 15px;
+  color: black;
+  border: 1px solid rgb(218, 15, 15);
+  border-radius: 50px;
+}
+.category-header {
+  color: rgb(48, 45, 70);
+}
+.user-dashboard-header {
+  color: black;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 20px;
+}
+.user-dashboard-p {
+  color: black;
+  font-size: 18px;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+.form-search {
+  border: none;
+}
+.user-form-control {
+  width: 500px;
+}
+.profile-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
